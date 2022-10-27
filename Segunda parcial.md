@@ -13,8 +13,80 @@ Donde estaran adjuntos los diferentes codigos de las clases en las que trabajamo
 ---
 # Segunda Parcial
 
-### _Lenguaje Dart_
-#### Programas de clase:
+## Lenguaje Dart...
+
+### _Introducción al lenguaje:_
+
+##
+  ### Impresión de un "Hola mundo"
+         void main() {
+          print("hola mundo");
+         }
+##
+  ### Declaracion de Variables 
+
+ Maneja un tipado  explicito 
+ 
+ - #### Tipo Entero
+ 
+ Sirve para datos de tipo entero sin decimales  
+ 
+        void main() {
+         int miEntero = 10;
+         print(miEntero);
+        }
+ 
+ - #### Tipo Flotante 
+ 
+ Sirve para datos con decimales 
+ 
+        void main() {
+         double miDouble = 3.1416;
+         print(miDouble);
+        }
+ 
+ - #### Tipo Numerico
+ 
+ Este sirve para cuando no se sabe que tipo de dato es el que se va a emplear: int y double;
+ tambien conocida como una super clase, por el hecho de que facilita al programador la
+ captura de un dato ya sea entero o decimal.
+ 
+         void main() {
+          num miNumero1 = 10;
+          num miNumero2 = 3.1416;
+
+          print(miNumero1);
+          print(miNumero2);
+         } 
+
+- #### Tipo String
+
+         void main() {
+          String miString = "hola";
+          print(miString);
+         } 
+  
+- #### Tipo Dynamic
+ Es conocido como tipo de dato dinamico; Este se utiliza cunado no sabes que tipo de dato es el que vas utilizar,
+ puede contener datos del tipo entero, decimal y texto.
+
+     void main() {
+      dynamic miDinamico = "hola";
+      print(miDinamico);
+      dynamic miDinamico1 = 3.1416;
+      print(miDinamico1);
+     }
+     
+ - #### Tipo final 
+ se utliza para que eldato no se pueda cambiar ("tiempo de ejecucion".
+       
+      void main() { 
+      final double miPI = 3.1416;  
+      print(miPI);
+      }
+      
+      
+### Programas de clase:
 
     void main(){
         num a =4;
@@ -35,6 +107,8 @@ Donde estaran adjuntos los diferentes codigos de las clases en las que trabajamo
         print(5.isEven); // saber si es impar
         print(5.isOdd); // saber si es par
     }
+
+##
 
 ##
 
@@ -703,100 +777,215 @@ Donde estaran adjuntos los diferentes codigos de las clases en las que trabajamo
 ##
   ## Ejecucion de metodos de la superclase
   ### Ejemplos:
-  class User {
-//   String nombre = "";
-//   int edad = 0;
-//   User(this.nombre, this.edad);
+  
+                class User {
+                    String nombre = "";
+                    int edad = 0;
+                    User(this.nombre, this.edad);
 
-//   void mostrarDatos() {
-//     print("Nombre: $nombre");
-//     print("Edad $edad");
-//   }
-// }
+                    void mostrarDatos() {
+                    print("Nombre: $nombre");
+                    print("Edad $edad");
+                    }
+                }
 
-// class Estudiante extends User {
-//   Estudiante(String nombre, int edad) : super(nombre, edad);
+                class Estudiante extends User {
+                    Estudiante(String nombre, int edad) : super(nombre, edad);
+                    @override
+                    
+                    void mostraDatos() {
+                    print("Estudiante");
+                    super.mostrarDatos();
+                    }
+                }
 
-//   @override
-//   void mostraDatos() {
-//     print("Estudiante");
-//     super.mostrarDatos();
-//   }
-// }
+                class Profesor extends User {
+                    Profesor(String nombre, int edad) : super(nombre, edad);
+                    @override
+                    
+                    void mostraDatos() {
+                    print("Profesor");
+                    super.mostrarDatos();
+                    }
+                }
 
-// class Profesor extends User {
-//   Profesor(String nombre, int edad) : super(nombre, edad);
+                class Directivo extends User {
+                    Directivo(String nombre, int edad) : super(nombre, edad);
 
-//   @override
-//   void mostraDatos() {
-//     print("Profesor");
-//     super.mostrarDatos();
-//   }
-// }
+                    @override
+                    void mostraDatos() {
+                    print("Directivo");
+                    super.mostrarDatos();
+                    }
+                }
 
-// class Directivo extends User {
-//   Directivo(String nombre, int edad) : super(nombre, edad);
+                void main(List<String> args) {
+                    final estudiante1 = Estudiante("Hugo", 15);
+                    estudiante1.mostrarDatos();
 
-//   @override
-//   void mostraDatos() {
-//     print("Directivo");
-//     super.mostrarDatos();
-//   }
-// }
+                    final profesor1 = Profesor("Paco", 25);
+                    profesor1.mostrarDatos();
 
-// void main(List<String> args) {
-//   final estudiante1 = Estudiante("Hugo", 15);
-//   estudiante1.mostrarDatos();
+                    final directivo1 = Directivo("Luis", 30);
+                    directivo1.mostrarDatos();
+                }
+##
+  ## Clase Abstractas con metodos
+  
+  - ### Permites la creacion de metodos y propiedades generales sin su implementacion
+  - ### No son instanciables
 
-//   final profesor1 = Profesor("Paco", 25);
-//   profesor1.mostrarDatos();
+##
+  ### Ejemplos:
 
-//   final directivo1 = Directivo("Luis", 30);
-//   directivo1.mostrarDatos();
-// }
+                abstract class User {
+                    String? nombre;
+                    int? edad;
 
-//---------------------------------------//
+                    void mostarDatos();
+                }
 
-// Clase Abstractas con metodos
+                class Estudiante extends User {
+                    void mostrarDatos() {
+                        print("Estudiante");
+                        print("Nombre: $nombre");
+                        print("Edad: $edad");
+                    }
+                }
 
-// - Permites la creacion de metodos y propiedades generales
-// sin su implementacion
-// - No son instanciables
+                void main(List<String> args) {
+                
+                    final estudiante1 = Estudiante();
+                    estudiante1.nombre = "Alex";
+                    estudiante1.edad = 50;
+                    estudiante1.mostarDatos();
+                }
 
-//---------------------------------------//
+##
+  ## Clases abstractas con constructores
+  ### Ejemplos:
+                abstract class User {
+                    String? nombre;
+                    int? edad;
 
-// abstract class User {
-//   String? nombre;
-//   int? edad;
+                    User(this.nombre, this.edad);
+                    void mostrarDatos();
+                }
 
-//   void mostarDatos();
-// }
+                class Estudiante extends User {
+                    Estudiante(String nombre, int edad) : super(nombre, edad);
+                    void mostrarDatos() {
+                        print("Estudiante");
+                        print("Nombre $nombre");
+                        print("Edad: $edad");
+                    }
+                }
 
-// class Estudiante extends User {
-//   void mostrarDatos() {
-//     print("Estudiante");
-//     print("Nombre: $nombre");
-//     print("Edad: $edad");
-//   }
-// }
+                void main(List<String> args) {
+                    final estudiante1 = Estudiante("Alex", 50);
+                    estudiante1.mostrarDatos();
+                }
+##
+  ## Interfaces
+  ### Ejemplos:
+                class User {
+                    String? nombre;
+                    int? edad;
 
-// void main(List<String> args) {
-//   final estudiante1 = Estudiante();
-//   estudiante1.nombre = "Alex";
-//   estudiante1.edad = 50;
-//   estudiante1.mostarDatos();
-// }
+                    void mostrarDatos() {}
+                }
 
+                class Estudiante implements User {
+                    String? nombre;
+                    int? edad;
 
+                    void mostrarDatos() {
+                        print("Estudiante");
+                        print("Nombre $nombre");
+                        print("Edad $edad");
+                    }
+                }
 
+                void main(List<String> args) {
+                    final estudiante1 = Estudiante();
+                    estudiante1.nombre = "Alex";
+                    estudiante1.edad = 52;
+                    estudiante1.mostrarDatos();
+                }
 
+##
+  ## Multi-Interfaces
+  ### Ejemplos:
+                class User {
+                    String? nombre;
+                    int? edad;
 
+                    void mostrarDatos() {}
+                }
+                class Estudiante implements User, Materia {
+                    String? nombre;
+                    int? edad;
+                    String? materia;
 
+                void mostrarDatos() {
+                    print("Estudiante");
+                    print("Nombre: $nombre");
+                    print("Edad $edad");
+                    }
+                }
 
+                class Materia {
+                    String? materia;
+                }
 
+                void main(List<String> args) {
+                    final estudiante1 = Estudiante();
+                    estudiante1.nombre = "Alex";
+                    estudiante1.edad = 50;
+                    estudiante1.mostrarDatos();
+                    estudiante1.materia = "Matematicas";
+                    print("Materia: ${estudiante1.materia}");
+                }
 
+##
+  ## Atributos y Metodos de clase (estaticos)
+  ### Ejemplo: Propiedaes de instancia
+  
+                void main(List<String> args) {
+                    final usuario1 = User();
+                    final usuario2 = User();
+                    print(usuario1.maxUsers);
+                    print(usuario2.maxUsers);
+                }
 
+                class User {
+                    int maxUsers = 10;
+                }
 
+  ### Ejemplo: Propiedades de clase
+  
+                void main(List<String> args) {
+                    print(User.maxUsers);
+                }
+
+                class User {
+                    static int maxUsers = 10;
+                }
+
+  ### Ejemplo: Metodos de clase
+  
+                void main(List<String> args) {
+                    print(User.maxUsers);
+                    print("Maximo de usuarios: ${User.getMAxUsers()}");
+                }
+
+                class User {
+                    static int maxUsers = 10;
+                    
+                    static int getMAxUsers() {
+                    return maxUsers;
+                    }
+                }
 
 
 
