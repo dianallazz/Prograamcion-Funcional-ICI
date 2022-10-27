@@ -7,8 +7,8 @@
 ---
 ## Introducción:
 
-Este es el portafolio de la segunda parcial en la materia de programacion funcional de la carrera de ICI. 
-Donde estaran adjuntos los diferentes codigos de las clases en las que trabajamos con el lenguaje de Dart.
+Este es el portafolio de la segunda parcial en la materia de programación funcional de la carrera de ICI. 
+Donde estarán adjuntos los diferentes codigos de las clases en las que trabajamos con el lenguaje de Dart.
 
 ---
 # Segunda Parcial
@@ -25,11 +25,11 @@ Donde estaran adjuntos los diferentes codigos de las clases en las que trabajamo
 ##
   ### Declaracion de Variables 
 
- Maneja un tipado  explicito 
+ Maneja un tipado  explícito. 
  
  - #### Tipo Entero
  
- Sirve para datos de tipo entero sin decimales  
+ Sirve para datos de tipo entero sin decimales.  
  
         void main() {
          int miEntero = 10;
@@ -38,7 +38,7 @@ Donde estaran adjuntos los diferentes codigos de las clases en las que trabajamo
  
  - #### Tipo Flotante 
  
- Sirve para datos con decimales 
+ Sirve para datos con decimales. 
  
         void main() {
          double miDouble = 3.1416;
@@ -47,9 +47,7 @@ Donde estaran adjuntos los diferentes codigos de las clases en las que trabajamo
  
  - #### Tipo Numerico
  
- Este sirve para cuando no se sabe que tipo de dato es el que se va a emplear: int y double;
- tambien conocida como una super clase, por el hecho de que facilita al programador la
- captura de un dato ya sea entero o decimal.
+ Este sirve para cuando no se sabe que tipo de dato es el que se va a emplear: int y double; también conocida como una super clase, por el hecho de que facilita al programador la captura de un dato ya sea entero o decimal.
  
          void main() {
           num miNumero1 = 10;
@@ -67,185 +65,291 @@ Donde estaran adjuntos los diferentes codigos de las clases en las que trabajamo
          } 
   
 - #### Tipo Dynamic
- Es conocido como tipo de dato dinamico; Este se utiliza cunado no sabes que tipo de dato es el que vas utilizar,
+ Es conocido como tipo de dato dinamico; Este se utiliza cuando no sabes que tipo de dato es el que vas utilizar,
  puede contener datos del tipo entero, decimal y texto.
 
-     void main() {
-      dynamic miDinamico = "hola";
-      print(miDinamico);
-      dynamic miDinamico1 = 3.1416;
-      print(miDinamico1);
-     }
+         void main() {
+          dynamic miDinamico = "hola";
+          print(miDinamico);
+          dynamic miDinamico1 = 3.1416;
+          print(miDinamico1);
+         }
      
  - #### Tipo final 
- se utliza para que eldato no se pueda cambiar ("tiempo de ejecucion".
+ Se utliza para que el dato no se pueda cambiar ("tiempo de ejecucion").
        
-      void main() { 
-      final double miPI = 3.1416;  
-      print(miPI);
-      }
+          void main() { 
+          final double miPI = 3.1416;  
+          print(miPI);
+          }
+
       
-      
-### Programas de clase:
+ ## Verificar un tipo de dato 
+ 
+Esto se utliza para verificar si un tipo de dato  esta correctamente declarado ya sea entero, double, num o String,
+al momento de imprimir te arroja si el dato es falso o verdadero.
 
-    void main(){
-        num a =4;
-        a as int; //casting sobre datos numericos
-        print(a.isEven); // saber si es impar
+ ### Ejemplo: 
+" print("nombre de la variable" is "tipo de dato"); "
 
-        var infInt = 5;
-        var infDouble = 9.81;
-        print("${infInt.runtimeType}"); //saber el tipo de dato que es
-        print("${infDouble.runtimeType}");
+          void main() {
+            int miEntero = 10;
+            print(miEntero is int);//verdadero
 
-        num infNum;
-        infNum = 3.6;
-        print("${infNum.runtimeType}");
-        infNum = 5;
-        print("${infNum.runtimeType}");
+            double miDouble = 3.1416;
+            print(miDouble is double);//verdadero
+            print(miEntero is double);//verdadero
 
-        print(5.isEven); // saber si es impar
-        print(5.isOdd); // saber si es par
-    }
+            num miNumero1 = 10;
+            num miNumero2 = 3.1416;
 
-##
+            print(miNumero1 is num);//verdadero
+            print(miNumero2 is num);//verdadero
 
-##
+            String miString = "hola";
+            print(miString is String);//verdadero
 
-    void main(List<String> args){
-        int a = -3000;
-        doble b = 9.89;
+            bool miBool = true;                           
+            print(!miBool);//false
 
-        print(a.isNegative); // saber si es negativo
-
-        print(b.floor()); // pone el numero menor
-        print(b.ceil()); // pone el numero mayor
-
-        print(b.round()); // redondear
-
-        print(b.truncate()); // quitar decimales
-
-        var c = "Hola";
-
-        print(!b.isNaN); //saber si es un numero
-    }
+            bool miBool = true;                           
+            print(miBool);//verdadero
+          }
+     
+Notas:
+ - #### El dinámico ("dynamic") no se puede verificar que tipo de dato es porque  puede ser utlizado en varios tipos de datos.
+ - #### El tipop bool es para representar valores booleanos: true y false. 
 
 
 ##
-    void main(){
-      num a = 3;
-      a as int;// casting sobre datos numericos
-      print(a.isEven);
-      var infInt = 5;
-      var infDouble = 9.81;
+  ## Declaracion de contantes 
+Se declara el valor deesde el inicio para que funcione bien  ("tiempo de compilacion").
 
-      print("${infInt.runtimeType}");
-      print("${infDouble.runtimeType}");
+          void main() {
+            const double miPI = 3.1416;   ///declarion de constante de manera explicita 
+            print(miPI);
+          }
+##
+  ## RuntimeType
+ Verifica el dato en timpo de ejecucioón y muestra el tipo de dato que esta utilizando al moento de ejecutar el programa. 
+ 
+          void main() {
+            num miNumero;
+            miNumero = 3.1416;
+            print(miNumero.runtimeType); //tiempo de ejecucion  y muestra que tipo de dato es double
 
-      num infNum;
-      infNum = 3.6;
-      print("${infNum.runtimeType}");
-      infNum = 5;
-      print("${infInt.runtimeType}");
-      print(5.isEven);
-     }
+            dynamic midinamico;
+            midinamico = 5;
+            print(midinamico.runtimeType); //tiempo de ejecucion  y muestra que tipo de dato es int.
+
+            dynamic miDinamico;
+            miDinamico = "5";
+            print(miDinamico.runtimeType); //tiempo de ejecucion  y muestra que tipo de dato es string.
+          }
+ ##
+   ## Declaración con var  (inferencia de tipo)
+ Verificar tipo de variables: 
+ 
+          void main(List<String> args) {
+            var numero1 = 100;//int
+            var numero2 = 9.81;//double
+            var nombre = "Diana";//string
+
+            print(numero1.runtimeType);
+            print(numero2.runtimeType);
+            print(nombre.runtimeType);
+          }
+##
+ ## casting o conversión de tipos de datos 
+ 
+           void main(List<String> args) {
+             var numero1 = 100; //tipo int
+             var numero2 = 9.81; //tipo double
+
+             var resultado;   //dinamic
+
+             resultado = numero1 + numero2;
+             print(resultado.runtimeType);  //double
+           }
+
+    
+  Conversión de resultado   double a int. 
+
+          void main(List<String> args) {
+            const numero1 = 19.5;
+            const numero2 = 10;
+            final total = (numero1 * numero2).toInt();
+            print(total);  
+          }
+##
+   ## Numeros en distintas bases
+ 
+ Multiplicación de números hexadecimales. 
+ 
+          void main(List<String> args) {
+            int nHexa1 = 0xF;
+            int nHexa2 = 0xF;
+
+            print(nHexa1 * nHexa2);
+          }
+
+##### Programas de clase:
+
+          void main(){
+              num a =4;
+              a as int; //casting sobre datos numericos
+              print(a.isEven); // saber si es impar
+
+              var infInt = 5;
+              var infDouble = 9.81;
+              print("${infInt.runtimeType}"); //saber el tipo de dato que es
+              print("${infDouble.runtimeType}");
+
+              num infNum;
+              infNum = 3.6;
+              print("${infNum.runtimeType}");
+              infNum = 5;
+              print("${infNum.runtimeType}");
+
+              print(5.isEven); // saber si es impar
+              print(5.isOdd); // saber si es par
+          }
+
+##
+          void main(List<String> args){
+              int a = -3000;
+              doble b = 9.89;
+
+              print(a.isNegative); // saber si es negativo
+
+              print(b.floor()); // pone el numero menor
+              print(b.ceil()); // pone el numero mayor
+
+              print(b.round()); // redondear
+
+              print(b.truncate()); // quitar decimales
+
+              var c = "Hola";
+
+              print(!b.isNaN); //saber si es un numero
+          }
+
+
+##
+          void main(){
+            num a = 3;
+            a as int;// casting sobre datos numericos
+            print(a.isEven);
+            var infInt = 5;
+            var infDouble = 9.81;
+
+            print("${infInt.runtimeType}");
+            print("${infDouble.runtimeType}");
+
+            num infNum;
+            infNum = 3.6;
+            print("${infNum.runtimeType}");
+            infNum = 5;
+            print("${infInt.runtimeType}");
+            print(5.isEven);
+           }
 
 ##
 
-    void main() {
-      int a = -3000;
-      double b = 9.4;
+          void main() {
+            int a = -3000;
+            double b = 9.4;
 
-      print(a.isNegative); // indicar si es negativo
+            print(a.isNegative); // indicar si es negativo
 
-      print(b.floor()); //piso numero menor
-      print(b.ceil()); //cielo te pone el numero mayor
+            print(b.floor()); //piso numero menor
+            print(b.ceil()); //cielo te pone el numero mayor
 
-      print(b.round()); //redondear
+            print(b.round()); //redondear
 
-      print(b.truncate()); //quitar decimales
+            print(b.truncate()); //quitar decimales
 
-      print(!b.isNaN); //isNaN para saber si es un número
-    }
+            print(!b.isNaN); //isNaN para saber si es un número
+          }
 
 ##
 
-    import 'dart:math';
+          import 'dart:math';
 
-    main(){ //division
-      print((10 / 3).truncate());
-      print(10 ~/ 3);
+          main(){ //division
+            print((10 / 3).truncate());
+            print(10 ~/ 3);
 
-     print(cos(45 * pi / 180));
-     print(sin(45 * pi / 180));
-     print(sqrt(9));
-     print(pow(2, 3));
-     print(max(6, 10));
-     print(min(6, 10));
-    }
+           print(cos(45 * pi / 180));
+           print(sin(45 * pi / 180));
+           print(sqrt(9));
+           print(pow(2, 3));
+           print(max(6, 10));
+           print(min(6, 10));
+          }
 ##
 - ## Incrementos
 
-      void main(List<String> args) {//Incfrementos
-        var contador = 10;
-        contador = contador + 1;
-        print(contador);
-        contador += 1;
-        print(contador);
-        contador++;
-        print(contador);
-        ++contador;
-        print(contador);
+          void main(List<String> args) {//Incfrementos
+            var contador = 10;
+            contador = contador + 1;
+            print(contador);
+            contador += 1;
+            print(contador);
+            contador++;
+            print(contador);
+            ++contador;
+            print(contador);
 
-        var c = 10;
-        print(++c);
-        c = 10;
-        print(c++);
-        print(c);
-      }
+            var c = 10;
+            print(++c);
+            c = 10;
+            print(c++);
+            print(c);
+          }
 ##
 - ## Decrementos.
 
-      void main(List<String> args) {//Decrementos
-        var contador = 10;
-        contador = contador - 1;
-        print(contador);
-        contador -= 1;
-        print(contador);
-        contador--;
-        print(contador);
-        --contador;
-        print(contador);
+          void main(List<String> args) {//Decrementos
+            var contador = 10;
+            contador = contador - 1;
+            print(contador);
+            contador -= 1;
+            print(contador);
+            contador--;
+            print(contador);
+            --contador;
+            print(contador);
 
-        var c = 10;
-        print(--c);
-        c = 10;
-        print(c--);
-        print(c);
-      }
+            var c = 10;
+            print(--c);
+            c = 10;
+            print(c--);
+            print(c);
+          }
 ##
-       void main(List<String> args) {
-         int a = 5;
-         double b = 3.5;
-         print(a.toDouble());
-         print(b.toInt());
-         print("El valor es: $a ");
-         print("El valor es: "+ a.toString());
-         print( a + b );
-         print( a / b );
+         void main(List<String> args) {
+           int a = 5;
+           double b = 3.5;
+           print(a.toDouble());
+           print(b.toInt());
+           print("El valor es: $a ");
+           print("El valor es: "+ a.toString());
+           print( a + b );
+           print( a / b );
 
-       }
+         }
 ##
-       void main(List<String> args) {
-          var a = "10";
-          var b = "8.5";
+         void main(List<String> args) {
+            var a = "10";
+            var b = "8.5";
 
-          print(int.parse(a) * 2);
-          print(double.parse(b) * 2);
+            print(int.parse(a) * 2);
+            print(double.parse(b) * 2);
 
-          var num = 3.141615925687;
-          print(num.toStringAsFixed(3));
-        }
+            var num = 3.141615925687;
+            print(num.toStringAsFixed(3));
+          }
 
 ##
 - ## Hacer Comentarios en Dart.
@@ -259,62 +363,62 @@ Donde estaran adjuntos los diferentes codigos de las clases en las que trabajamo
 ##
 - ## Uso de clases.
 
-       void main() {
-          User usuario = User();
-          print(usuario);
-          usuario.nombre = "Diana";
-          usuario.edad = 18;
-          print(usuario.nombre);
-          print(usuario.edad);
-          User usuario2 = User();
-          print(usuario2);
-          usuario2.nombre = "Leo";
-          usuario2.edad = 25;
-          print(usuario2.nombre);
-          print(usuario2.edad);
-       }
+           void main() {
+              User usuario = User();
+              print(usuario);
+              usuario.nombre = "Diana";
+              usuario.edad = 18;
+              print(usuario.nombre);
+              print(usuario.edad);
+              User usuario2 = User();
+              print(usuario2);
+              usuario2.nombre = "Leo";
+              usuario2.edad = 25;
+              print(usuario2.nombre);
+              print(usuario2.edad);
+           }
 
-      // clase que representa un usuario
-       class User {
-      // propiedad mombre de tipo string
-        String? nombre;
-        int? edad;
-      }
-##
-        void main() {
-          User usuario = User();
-          print(usuario);
-          usuario.nombre = "Diana";
-          usuario.edad = 18;
-          usuario.reporteUser();
-
-          User usuario2 = User();
-          print(usuario2);
-          usuario2.nombre = "Leo";
-          usuario2.edad = 25;
-          usuario2.reporteUser();
-        }
-
-        // clase que representa un usuario
-        class User {
+          // clase que representa un usuario
+           class User {
           // propiedad mombre de tipo string
-          String? _nombre = "Diana";
-          //Propiedad edad de tipo int mayor de 0(cero)
-          int? _edad = 21;
-          //metodo que imprimeun usuario
-          void reporteUser() {
-            print(_nombre);
-            print(_edad);
+            String? nombre;
+            int? edad;
+          }
+##
+          void main() {
+            User usuario = User();
+            print(usuario);
+            usuario.nombre = "Diana";
+            usuario.edad = 18;
+            usuario.reporteUser();
+
+            User usuario2 = User();
+            print(usuario2);
+            usuario2.nombre = "Leo";
+            usuario2.edad = 25;
+            usuario2.reporteUser();
           }
 
-          void set nombre(String nombre) {
-            _nombre = nombre;
-          }
+          // clase que representa un usuario
+          class User {
+            // propiedad mombre de tipo string
+            String? _nombre = "Diana";
+            //Propiedad edad de tipo int mayor de 0(cero)
+            int? _edad = 21;
+            //metodo que imprimeun usuario
+            void reporteUser() {
+              print(_nombre);
+              print(_edad);
+            }
 
-          String get nombre {
-            return _nombre!;
+            void set nombre(String nombre) {
+              _nombre = nombre;
+            }
+
+            String get nombre {
+              return _nombre!;
+            }
           }
-        }
 ##
   ## Objetos: Clases y atributos.
   
