@@ -14,7 +14,50 @@ Donde estaran adjuntos los diferentes codigos de las clases en las que trabajamo
 # Segunda Parcial
 
 ### _Lenguaje Dart_
+#### Programas de clase:
 
+    void main(){
+        num a =4;
+        a as int; //casting sobre datos numericos
+        print(a.isEven); // saber si es impar
+
+        var infInt = 5;
+        var infDouble = 9.81;
+        print("${infInt.runtimeType}"); //saber el tipo de dato que es
+        print("${infDouble.runtimeType}");
+
+        num infNum;
+        infNum = 3.6;
+        print("${infNum.runtimeType}");
+        infNum = 5;
+        print("${infNum.runtimeType}");
+
+        print(5.isEven); // saber si es impar
+        print(5.isOdd); // saber si es par
+    }
+
+##
+
+    void main(List<String> args){
+        int a = -3000;
+        doble b = 9.89;
+
+        print(a.isNegative); // saber si es negativo
+
+        print(b.floor()); // pone el numero menor
+        print(b.ceil()); // pone el numero mayor
+
+        print(b.round()); // redondear
+
+        print(b.truncate()); // quitar decimales
+
+        var c = "Hola";
+
+        print(!b.isNaN); //saber si es un numero
+    }
+
+
+##
     void main(){
       num a = 3;
       a as int;// casting sobre datos numericos
@@ -129,14 +172,12 @@ Donde estaran adjuntos los diferentes codigos de las clases en las que trabajamo
           var num = 3.141615925687;
           print(num.toStringAsFixed(3));
         }
-##
-
-clase del 10/10/2022
 
 ##
 - ## Hacer Comentarios en Dart.
 
     - //una sola linea
+    
 
     - /* comentarios 
       en bloque*/
@@ -360,11 +401,391 @@ clase del 10/10/2022
             }    
 
 ##
+  ## Constructores.
 
 
+- #### Método de la clase que se encarga de inicializar los atributos
+- #### Es el primer método que se llama al crear la instancia
+- #### El método lleva el nombre de la clase
+
+##
+  ### Ejemplo:
+    
+            class User {
+              User() { //Creacion del constructor User
+                print("Constructor User");
+              }
+            }
+            void main(List<String> args) {
+              final usuario1 = User(); //Creacion de la instancia usuario 1 que invoca al constructor User
+              print(usuario1);
+            }
+            
+  ### Ejemplo: Equivalencia a los setters y getters
+ 
+            class User {
+              String? _nombre;
+              int? _edad;
+              User(String nombre, int edad) {
+                this._nombre = nombre;
+                this._edad = edad;
+              }
+              String? get nombre => _nombre;
+              int? get edad => _edad;
+            }
+
+            void main(List<String> args) {
+              final usuario1 = User("Alex", 50);
+              print(usuario1.nombre);
+              print(usuario1.edad);
+            }
+ ##
+   ### Ejemplo: Version corta de constructores(short hand)
+   
+            class User {
+              String _nombre;
+              int _edad;
+
+              User(this._nombre, this._edad);
+
+              String get nombre => _nombre;
+              int get edad => _edad;
+            }
+
+            void main(List<String> args) {
+              final usuario1 = User("Alex", 50);
+              print(usuario1.nombre);
+              print(usuario1.edad);
+            }
+##
+  ## Constructores con propiedades nombradas
+  ### Ejemplo:
+            class User {
+                String? nombre; //Creacion de las propiedades
+                int? edad;
+
+                User({this.nombre, this.edad}); //Creacion del contructor
+
+                String? get getNombre => nombre; //Creacion de los getters
+                int? get getEdad => edad;
+            }
+
+            void main(List<String> args) {
+                final usuario1 = User(nombre: "Alex", edad: 50); //Creacion de la instancia User con su contruccion
+                print(usuario1.nombre);
+                print(usuario1.edad);
+            }
+##
+  ## Varios constructores para una clase
+  ### Ejemplos:
+            class User {
+                String? nombre;
+                int? edad;
+
+                User.nombre(this.nombre); //Constructor para la propieda nombre
+                User.edad(this.edad); //Constructor para la propiedad edad
+
+                String? get getNombre => nombre;
+                int? get getEdad => edad;
+            }
+
+            void main(List<String> args) {
+                final usuario1 = User.nombre("Alex"); //Creacion de la instancia usuario1 con el constructor nombre
+                final usuario2 = User.edad(50); //Creacion de la instancia usuario2 con el constructor edad
+
+                print(usuario1.getNombre);
+                print(usuario1.getEdad);
+
+                print(usuario2.getEdad);
+                print(usuario2.getNombre);
+            }
+##
+            class User {
+                String? _nombre;
+                int? _edad;
+
+            User.nombre(String nombre) {
+                _nombre = nombre;
+                _edad = 0;
+            }
+
+            User.edad(int edad) {
+                _nombre = "-";
+                _edad = edad;
+            }
+
+            String? get getNombre => _nombre;
+            int? get getEdad => _edad;
+            }
+
+            void main(List<String> args) {
+                final usuario1 = User.nombre("Alex");
+                final usuario2 = User.edad(50);
+
+                print(usuario1.getNombre);
+                print(usuario1.getEdad);
+
+                print(usuario2.getEdad);
+                print(usuario2.getNombre);
+            }
+##
+  ## Herencia y polimorfismo.
+  ### Herencia
+   - #### Mecanismo con el que se puede extender la funcionalidad de una clase
+   - #### Por ejemplo usuario puede ser:
+      - #### Estudiante.
+      - #### Profesor.
+      - #### Directivo.
+      - #### Etc.
+  
+  #### Ejemplos:
+  
+            class Estudiante {
+                String nombre = "";
+                int edad = 0;
+
+                void mostrarDatos() {
+                print("Nombre: $nombre");
+                print("Edad: $edad");
+                }
+            }
+
+            class Profesor {
+                String nombre = "";
+                int edad = 0;
+
+                void mostrarDatos() {
+                print("Nombre: $nombre");
+                print("Edad: $edad");
+                }
+            }
+
+            class Directivo {
+                String nombre = "";
+                int edad = 0;
+
+                void mostrarDatos() {
+                print("Nombre: $nombre");
+                print("Edad: $edad");
+                }
+            }
+
+            void main(List<String> args) {
+                final estudiante1 = Estudiante();
+                estudiante1.nombre = "Diana";
+                estudiante1.edad = 15;
+                estudiante1.mostrarDatos();
+
+                final profesor1 = Profesor();
+                profesor1.nombre = "Edgar";
+                profesor1.edad = 25;
+                profesor1.mostrarDatos();
+
+                final directivo1 = Directivo();
+                directivo1.nombre = "Juan";
+                directivo1.edad = 30;
+                directivo1.mostrarDatos();
+                }
 
 
+##
+                class User {
+                    String nombre = "";
+                    int edad = 0;
 
+                    void mostrarDatos() {
+                    print("Nombre: $nombre");
+                    print("Edad: $edad");
+                    }
+                }
+
+                class Estudiante extends User {}
+                class Profesor extends User{}
+                class Directivo extends User{}
+
+                void main(List<String> args) {
+                    final estudiante1 = Estudiante();
+                    estudiante1.nombre = "Hugo";
+                    estudiante1.edad = 15;
+                    estudiante1.mostrarDatos();
+
+                    final profesor1 = Profesor();
+                    profesor1.nombre = "Paco";
+                    profesor1.edad = 25;
+                    profesor1.mostrarDatos();
+
+                    final directivo1 = Directivo();
+                    directivo1.nombre = "Luis";
+                    directivo1.edad = 30;
+                    directivo1.mostrarDatos();
+                }
+##
+
+  ## Polimorfismo
+   - #### Mecanismo que permite a las instancias de una clase acceder a  los distintos métodos de las clases relacionadas con el tiempo de ejecución. 
+##
+  ## Sobreescritura de metodos (Overriding)
+  ### Ejemplos:
+                class User {
+                    String nombre = "";
+                    int edad = 0;
+
+                    void mostrarDatos() {
+                    print("Nombre: $nombre");
+                    print("Edad: $edad");
+                    }
+                }
+
+                class Estudiante extends User {
+                    @override
+                    void mostrarDatos() {
+                    print("Estudiante: $nombre");
+                    print("Edad: $edad");
+                    }
+                }
+
+                class Profesor extends User{}
+                class Directivo extends User{}
+
+                void main(List<String> args) {
+                    final estudiante1 = Estudiante();
+                    estudiante1.nombre = "Hugo";
+                    estudiante1.edad = 15;
+                    estudiante1.mostrarDatos();
+
+                    final profesor1 = Profesor();
+                    profesor1.nombre = "Paco";
+                    profesor1.edad = 25;
+                    profesor1.mostrarDatos();
+
+                    final directivo1 = Directivo();
+                    directivo1.nombre = "Luis";
+                    directivo1.edad = 30;
+                    directivo1.mostrarDatos();
+                }
+##
+  ## Uso del constructor super
+  ### Ejemplos:
+                class User {
+                    String nombre = "";
+                    int edad = 0;
+                    User(this.nombre, this.edad);
+
+                    void mostrarDatos() {
+                    print("Nombre: $nombre");
+                    print("Edad: $edad");
+                    }
+                }
+
+                class Estudiante extends User {
+                    Estudiante(String nombre, int edad) : super(nombre, edad);
+                }
+
+                class Profesor extends User {
+                    Profesor(String nombre, int edad) : super(nombre, edad);
+                }
+
+                class Directivo extends User {
+                    Directivo(String nombre, int edad) : super(nombre, edad);
+                }
+
+                void main(List<String> args) {
+                    final estudiante1 = Estudiante("Hugo", 15);
+                    estudiante1.mostrarDatos();
+
+                    final profesor1 = Profesor("Paco", 25);
+                    profesor1.mostrarDatos();
+
+                    final directivo1 = Directivo("Luis", 30);
+                    directivo1.mostrarDatos();
+                }
+
+##
+  ## Ejecucion de metodos de la superclase
+  ### Ejemplos:
+  class User {
+//   String nombre = "";
+//   int edad = 0;
+//   User(this.nombre, this.edad);
+
+//   void mostrarDatos() {
+//     print("Nombre: $nombre");
+//     print("Edad $edad");
+//   }
+// }
+
+// class Estudiante extends User {
+//   Estudiante(String nombre, int edad) : super(nombre, edad);
+
+//   @override
+//   void mostraDatos() {
+//     print("Estudiante");
+//     super.mostrarDatos();
+//   }
+// }
+
+// class Profesor extends User {
+//   Profesor(String nombre, int edad) : super(nombre, edad);
+
+//   @override
+//   void mostraDatos() {
+//     print("Profesor");
+//     super.mostrarDatos();
+//   }
+// }
+
+// class Directivo extends User {
+//   Directivo(String nombre, int edad) : super(nombre, edad);
+
+//   @override
+//   void mostraDatos() {
+//     print("Directivo");
+//     super.mostrarDatos();
+//   }
+// }
+
+// void main(List<String> args) {
+//   final estudiante1 = Estudiante("Hugo", 15);
+//   estudiante1.mostrarDatos();
+
+//   final profesor1 = Profesor("Paco", 25);
+//   profesor1.mostrarDatos();
+
+//   final directivo1 = Directivo("Luis", 30);
+//   directivo1.mostrarDatos();
+// }
+
+//---------------------------------------//
+
+// Clase Abstractas con metodos
+
+// - Permites la creacion de metodos y propiedades generales
+// sin su implementacion
+// - No son instanciables
+
+//---------------------------------------//
+
+// abstract class User {
+//   String? nombre;
+//   int? edad;
+
+//   void mostarDatos();
+// }
+
+// class Estudiante extends User {
+//   void mostrarDatos() {
+//     print("Estudiante");
+//     print("Nombre: $nombre");
+//     print("Edad: $edad");
+//   }
+// }
+
+// void main(List<String> args) {
+//   final estudiante1 = Estudiante();
+//   estudiante1.nombre = "Alex";
+//   estudiante1.edad = 50;
+//   estudiante1.mostarDatos();
+// }
 
 
 
